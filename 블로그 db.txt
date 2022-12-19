@@ -1,0 +1,85 @@
+--게시판 테이블
+create table blogboard(
+	idx number(3) primary key,
+	userid varchar2(50),
+	title varchar2(100),
+	content varchar2(2000),
+	regdate varchar2(10)
+);
+--게시판 테이블 시퀀스
+CREATE SEQUENCE blogboard_SEQ_IDX;
+
+--게시판 예시
+INSERT INTO blogboard VALUES(
+	blogbord_SEQ_IDX.nextval,
+	TEST1,
+	'안녕하세요~',
+	'혜정이의 일상을 기록하는 블로그 입니다.',
+	sysdate
+);
+
+--게시판 댓글 테이블
+CREATE TABLE blogreply( 
+	 R_NO NUMBER(3), --댓글의 고유번호 
+	 IDX NUMBER(3), --연결되어있는게시글 번호 
+	 USERID VARCHAR(30), 
+	 CONTENT VARCHAR(2000), 
+	 PRIMARY KEY(R_NO , IDX),
+	 FOREIGN KEY(IDX) REFERENCES blogboard(IDX) ON DELETE CASCADE, --블로그보드 테이블의 IDX랑 연걸
+	 FOREIGN KEY(USERID) REFERENCES BLOGUSER(USERID) -- 블로그유저 테이블의 USERID랑 연결
+);
+
+--게시판 댓글 시퀀스
+CREATE SEQUENCE BLOGREPLY_SEQ_IDX;
+
+--게시판 댓글 예시
+INSERT INTO BLOGREPLY VALUES(
+	BLOGREPLY_SEQ_IDX.NEXTVAL,
+	502,
+	'test2',
+	'첫번째 댓글입니다.',
+	sysdate
+);
+
+
+--게시판 유저 테이블
+create table bloguser(
+	userid varchar2(100) primary key,
+	userpwd varchar2(100) not null,
+	username varchar2(100) not null,
+	usertel1 varchar2(50) not null,
+	usertel2 varchar2(50) not null,
+	usertel3 varchar2(50 not null,
+	usermail vharchar2(200) not null,
+	verify number(3) default 0
+);
+--게시판 유저 예시
+Insert INTO bloguser(
+	'TEST1', 
+	'12341234qwer', 
+	'홍길동',
+	'010',
+	'1111',
+	'2222',
+	'gpwjddl98@naver.com',
+	9 --관리자 식별자
+);
+INSERT INTO bloguser(
+	'TEST2',
+	'qwerqwer1234',
+	'김길동',
+	'010',
+	'1234',
+	'4567',
+	'gpwjddl98@naver.com',
+	0 --일반로그인 식별자
+);
+
+
+--카카오 정보 저장 테이블
+CREATE TABLE KAKAO_TABLE(
+	K_NAME VARCHAR2(50) PRIMARY KEY
+);
+
+
+
