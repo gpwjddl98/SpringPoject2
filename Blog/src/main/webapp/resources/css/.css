@@ -1,0 +1,17 @@
+	
+
+	a {text-decoration: none;color: black;}
+	body{display:flex; justify-content:center; align-items:center; height:100vh;background-image:url('../img/background.jpg')}
+	.loginbox{width:50%; height:50%;display:flex; justify-content:center; align-items:center;}
+	.login_id, .login_pw {width: 30%;}
+	
+	.submit{position: relative;left: 180px; top: -50px;}
+	.submit_btn{width : 80px; height:50px; background-color:#FFB3AB; border:0;color:#fff; cursor:pointer; }
+	.submit_{position:relative; left:-180px;}
+
+	.kakao{width: 260px; height: 55px; position: relative;top: -40px;}
+	.kakao img{width:260px;}
+	.join{position: relative;  top: -40px; left:90px;}
+	
+	#btn_join{width:130px; height : 40px;background-color:#FFB3AB; border:0;color:#fff; cursor:pointer; position: relative; top: -20px;}
+	#btn_main{width:130px ;height : 40px; background-color:#FFB3AB; border:0;color:#fff; cursor:pointer; position: relative; top: -20px;}

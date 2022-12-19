@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<!-- 로그인 -->
+	<select id="login" resultType="vo.BlogUserVO">
+		select * from bloguser where userid = #{userid} and userpwd = #{userpwd}
+	</select>
+	
+	<!--회원가입 : 아이디 중복체크-->
+	<select id="Checkuserid" resultType="Integer">
+		select count(userid) from bloguser where userid = #{userid}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="user_insert">
+		insert into bloguser( userid, userpwd, username, usertel1, usertel2, usertel3 , useremail )
+		 values (#{userid} , #{userpwd},#{username}, #{usertel1} , #{usertel2} , #{usertel3} , #{useremail})
+	</insert>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

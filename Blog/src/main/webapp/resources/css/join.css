@@ -1,0 +1,23 @@
+
+
+	*{margin : 0; padding : 0;  }
+	ul,li{ list-style:none;}
+	a{text-decoration:none;color: #000;}
+	a:hover , a:active{text-decoration:underline;}
+	body{font-family: 'GmarketSansMedium';display:flex; justify-content:center; align-items:center; background-color:#FFF2E4;}
+
+	.outterbox{width: 80%;text-align:center;}
+	h1{ margin-top : 30px;}
+	form{ margin:10px auto; width:60%;}
+	div{margin-top:10px;}
+	
+	input{width:100%; height:30px;}
+	input.btn_email{background-color:#FFB3AB; border:0;color:#fff; cursor:pointer; margin-top: 5px; margin-bottom:5px;}
+	#btn_join{width:300px; height : 40px;background-color:#FFB3AB; border:0;color:#fff; cursor:pointer; margin-top: 30px;}
+	#btn_main{width:300px;height : 40px; background-color:#FFB3AB; border:0;color:#fff; cursor:pointer;}
+	/* 아이디 중복확인 css */
+	.id_input_green{color:green; display:none; }
+	.id_input_red{color:red; display:none;}
+	.id_ok{	color : green;diplay:none;}
+	.id_nope{color : red;display : none;}
+	

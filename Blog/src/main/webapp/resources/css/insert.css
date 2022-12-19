@@ -1,0 +1,30 @@
+	
+	
+	@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+	*{margin : 0; padding : 0;  }
+	ul,li{ list-style:none;}
+	a{text-decoration:none;color: #000;}
+	a:hover , a:active{text-decoration:underline;}
+	body{font-family: 'GmarketSansMedium'; background-image:url('../img/background.jpg');background-size:100%;background-repeat:no-repeat;background-color: #17807C; }
+	#header{border-bottom : 3px solid #000;width: 60%;margin: 0 auto;overflow : hidden;padding : 10px 0;}
+	.header_title{width: 50%; float:left;}
+	h1{padding: 10px;display:inline;}
+	span.userinfo{font-size: 10px;}
+	.login_btn input{background-color:#FFB3AB;border:0px;color : #fff;float : right;margin:10px 10px 0 0;}
+	input{width: 150px;height:30px;}
+	section{margin: 0 auto;width: 60%;overflow : hidden;}
+	section .rightinfo{width: 100%;float:right;}
+	.list{background-color : #FFFFFF;padding : 10px;margin: 30px;border-radius : 10px;}
+	.cont{background-color : #FFFFFF;border-radius : 10px;margin: 30px;}
+	.cont_title{width : 80%;margin : auto ;	padding : 30px;	font-size : 20px;}
+	.cont_title input{width : 100%;	margin-top : 10px;}
+	.cont_content{width : 80%;margin :  auto ;padding-bottom : 30px ;font-size : 20px;}
+	.cont_content textarea {resize: none;width : 100%; height : 110px;margin-top : 10px;}
+	.btn{margin : auto;width : 40%;}
+	#insert_btn ,#delet_btn{background-color:#FFB3AB;border:0px;color : #fff;width: 170px;height : 35px;}
+	

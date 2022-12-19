@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reply">
+
+	
+	
+	<!-- 댓글조회 -->
+	<select id="reply_list" resultType="vo.BlogBoardReplyVO"  parameterType="int">
+		select * from BLOGREPLY where idx = #{idx}
+	</select>
+	
+	<!-- 댓글 추가 -->
+	<insert id="reply_insert">
+	 	insert into BLOGREPLY values(BLOGREPLY_SEQ_IDX.NEXTVAL , #{idx} , #{userid} , #{content}, sysdate)
+	</insert>
+
+
+	<!-- 댓글 삭제 -->
+	<delete id="reply_delete">
+		delete BLOGREPLY 
+			where r_no = #{r_no}
+				and userid = #{userid}
+	</delete>
+	
+	<!-- 댓글 삭제시 아이디 확인 -->
+	<select id="reply_userid_check" resultType="String">
+		select userid
+			from BLOGREPLY
+				where r_no = #{r_no}
+	</select>
+	
+	<!-- 댓글 수정 -->
+	<update id="reply_modi">
+		update BLOGREPLY
+			set 
+				content = #{content}
+			where r_no = #{r_no}
+				and userid = #{userid}
+	</update>
+	
+	
+	<!-- 댓글 수정 시 아이디 확인 -->
+	
+	
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

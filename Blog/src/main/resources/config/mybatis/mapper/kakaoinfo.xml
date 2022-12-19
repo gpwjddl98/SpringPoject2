@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kakao">
+
+<select id="kakaoinfo" parameterType="java.util.HashMap" resultType="vo.KakaoVO" >
+	select * from kakao_table where k_name = #{nickname}
+</select>
+
+<insert id="kakaoinfo_insert" parameterType="java.util.HashMap">
+	insert into kakao_table(k_name)
+		values(#{nickname})
+</insert>
+	
+<insert id="kakao_reply_insert">
+	insert into kakao_reply values(KAKAO_REPLY_SEQ.nextval, #{idx} , #{k_name} , #{content} ,sysdate)
+</insert>
+
+<select id="kakao_reply_list" resultType="vo.KakaoVO" parameterType="int">
+	select * from kakao_reply where idx = #{idx}
+</select>
+
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
