@@ -128,7 +128,7 @@ public class KakaoController {
             }
             System.out.println("response body : " + result);
 
-            //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+            
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
 			
@@ -183,7 +183,6 @@ public class KakaoController {
 
             String nickname = properties.getAsJsonObject().get("nickname").getAsString();
         
-            
             userInfo.put("accessToken", access_Token);
             userInfo.put("nickname", nickname);
            

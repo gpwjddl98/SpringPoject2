@@ -187,62 +187,46 @@
 	}) 
 	//회원가입 유효성체크
 	function send(f){
-		
 		//아이디
 		 var userid = f.userid.value;
-		
 		if(userid == ""){
 			alert("아이디를 입력해주세요");
 			$(".userid").focus();
 			return;
 		}
-		
 		var checkid =  /^[a-zA-Z0-9]*$/;
-		
 		if(checkid.test(userid) == false){
 			alert("영대소문자 숫자만 포함해서 작성해주세요");
 			$(".userid").focus(); 
 			return;
 		}
-		
 		if(useridcheck == false){
 			alert("사용할 수 없는 아이디 입니다.");
 			$(".userid").focus(); 
 			return;
 		}
 		//비밀버호
-		
 		var userpwd = f.userpwd.value;
-		
 		if(userpwd == ""){
 			alert("비밀번호를 입력해주세요");
 			$(".userpwd").focus();
 			return;
 		}
-		
-		
 		//이름
 		var username= f.username.value;
 		if( username == ""){
 			alert("이릅을 입력해주세요");
 			$(".username").focus();
 			return;
-		} 
-
+		}
 		//이메일
 		if(useremailcheck == false){
 			alert("인증번호가 불일치 합니다 다시 확인해주세요");
 			$(".checkmail").focus();
 			return;
 		}
-		
-		
 		f.submit();
-		
-	}
-	
-	
-	
+	}	
 	</script>
 	
 </body>

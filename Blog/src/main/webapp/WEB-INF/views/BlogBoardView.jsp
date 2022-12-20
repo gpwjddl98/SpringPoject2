@@ -205,12 +205,10 @@ function replyList(){
 						</div>
 						<script>
 							replyList();
-							/* 댓글 목록 ajax */
 						</script>
 						<script>
 							$(document).on("click",".reply_modify",function(){
 								$(".replyModal").fadeIn(200);
-								
 								var r_no = $(this).attr("data-r_no");
 								var r_cont = $(this).parent().parent().children(".replyContent").text();						
 								$(".modi_content").val(r_cont);
