@@ -40,8 +40,8 @@ public class BlogBoardReplyDAO {
 		sqlSession.delete("reply.reply_delete",vo);
 	}
 	//아이디 확인
-	public String idCheck(int r_no) {
-		return sqlSession.selectOne("reply.reply_userid_check",r_no);
+	public String idCheck(int r_idx) {
+		return sqlSession.selectOne("reply.reply_userid_check",r_idx);
 	}
 	//댓글 수정
 	public void modify(BlogBoardReplyVO vo) {

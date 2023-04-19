@@ -53,8 +53,8 @@ public class KakaoController {
 @ResponseBody String getKakaoAuthUrl(HttpServletRequest request) throws Exception {
 		String reqUrl = 
 				"https://kauth.kakao.com/oauth/authorize"
-				+ "?client_id=37e286b9c406deaa2f6a4f035acc8f35"
-				+ "&redirect_uri=http://localhost:9090/phj/oauth_kakao"
+				+ "?client_id=발급받은 키값 입력하기"
+				+ "&redirect_uri=본인이 지정해둔 경로 입력하기"
 				+ "&response_type=code";
 		
 		System.out.println("getKakaoAuthUrl");
@@ -94,24 +94,33 @@ public class KakaoController {
         String reqURL = "https://kauth.kakao.com/oauth/token";
 
         try {
-        	 // 졀대 경로를 이용하여 url 객체 생성
+        	 // 1.졀대 경로를 이용하여 url 객체 생성
             URL url = new URL(reqURL);
-           
+            // 2. 요청하고자 하는 URL과 통신하기 위한 Connection객체 생성.
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-     
-
             // URL연결은 입출력에 사용 될 수 있고, POST 혹은 PUT 요청을 하려면 setDoOutput을 true로 설정해야함.
+            //3.통신을 위한 메소드 전송방식 post로설정 
             conn.setRequestMethod("POST");
+            /// OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
             conn.setDoOutput(true);
+            //conn.setRequestProperty("Content-type", "application/json"); 
+            //타입설정(application/json) 형식으로 전송 (Request Body 전달시 application/json로 서버에 전달.)
+            //등 여러 옵션들이 있다 위에 글은 예시
 
-            //	POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
+            //전달받은 데이터를 BufferedWriter에 저장
+            //:System.out.println();과 유사함
+            //OutputStrean ot = conn.OutputStrean();으로 작성하지 않고 바로  new OutputStreamWriter(conn.getOutputStream()) 으로 작성함
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+            //4.저장된 데이터를 라인별로 읽어 StringBuilder객체로 한개씩 append해준다.
+            //5.append 된 sb를 출력할때는 toString을 해줘야 한다.
+            //6.sb.toString 을 
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=37e286b9c406deaa2f6a4f035acc8f35");  //본인이 발급받은 key
-            sb.append("&redirect_uri=http://localhost:9090/phj/oauth_kakao");     // 본인이 설정해 놓은 경로
+            sb.append("&client_id=본인이 발급받은 키값을 입력하기");
+            sb.append("&redirect_uri=본인이 지정해둔 경로를 입력하기");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
+            //BufferedWriter를 사용하고 반드시 flush 와 아래 close를 해줘야 한다.
             bw.flush();
 
             //    결과 코드가 200이라면 성공
@@ -139,6 +148,7 @@ public class KakaoController {
             System.out.println("access_token : " + access_Token);
             System.out.println("refresh_token : " + refresh_Token);
 
+       
             br.close();
             bw.close();
         } catch (IOException e) {
@@ -193,7 +203,7 @@ public class KakaoController {
         } 
         
         KakaoVO result = kakaodao.findkakao(userInfo);
-        System.out.println("잘저장되어있는가? : " + result);
+
         
         if(result == null) {
         	kakaodao.kakaoinsert(userInfo);

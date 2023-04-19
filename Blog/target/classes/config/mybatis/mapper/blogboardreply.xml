@@ -8,36 +8,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 댓글조회 -->
 	<select id="reply_list" resultType="vo.BlogBoardReplyVO"  parameterType="int">
-		select * from BLOGREPLY where idx = #{idx}
+		SELECT * FROM BLOGREPLY WHERE idx = #{idx}
 	</select>
 	
 	<!-- 댓글 추가 -->
 	<insert id="reply_insert">
-	 	insert into BLOGREPLY values(BLOGREPLY_SEQ_IDX.NEXTVAL , #{idx} , #{userid} , #{content}, sysdate)
+		INSERT INTO BLOGREPLY VALUES ( 0 , #{idx} ,#{userid} , #{content}, now())
 	</insert>
 
 
 	<!-- 댓글 삭제 -->
 	<delete id="reply_delete">
-		delete BLOGREPLY 
-			where r_no = #{r_no}
-				and userid = #{userid}
+		DELETE FROM BLOGREPLY WHERE r_idx = #{r_idx} AND userid = #{userid}
 	</delete>
 	
 	<!-- 댓글 삭제시 아이디 확인 -->
 	<select id="reply_userid_check" resultType="String">
-		select userid
-			from BLOGREPLY
-				where r_no = #{r_no}
+		SELECT userid FROM BLOGREPLY WHERE r_idx = #{r_idx} 
 	</select>
 	
 	<!-- 댓글 수정 -->
 	<update id="reply_modi">
-		update BLOGREPLY
-			set 
-				content = #{content}
-			where r_no = #{r_no}
-				and userid = #{userid}
+		UPDATE BLOGREPLY SET content = #{content} WHERE r_idx = #{r_idx} AND userid = #{userid}
 	</update>
 	
 	

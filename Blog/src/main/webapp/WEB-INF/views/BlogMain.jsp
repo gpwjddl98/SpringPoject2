@@ -56,22 +56,22 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="vo" items="${list}">
+						<c:forEach var="list" items="${list}">
 							<tr>
-								<td><a href="BlogView.do?idx=${vo.idx }">${vo.title }</a></td>
-								<td style="text-align:center;">${vo.regdate }</td>
+								<td><a href="BlogView.do?idx=${list.idx }">${list.title }</a></td>
+								<td style="text-align:center;">${list.regdate }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div><!-- table_lsit -->
-			<c:forEach var="vo" items="${list}">
+			<c:forEach var="list" items="${list}">
 			<div class="info">
 				<div class="info_box_head">
-					<div class="title"><a href="BlogView.do?idx=${vo.idx }">${vo.title }</a></div>
+					<div class="title"><a href="BlogView.do?idx=${list.idx }">${list.title }</a></div>
 				</div>
 				<pre class="info_box_content">
-					${vo.content }
+					${list.content }
 				</pre>
 			</div><!-- info -->
 			</c:forEach>

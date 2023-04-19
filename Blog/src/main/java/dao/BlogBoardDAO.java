@@ -33,8 +33,8 @@ public class BlogBoardDAO {
 	}
 	
 	//글 자세히 보기 
-	public BlogBoardVO selectOne(int idx) {
-		BlogBoardVO vo = sqlSession.selectOne("board.blog_view",idx);
+	public BlogBoardVO selectOne(int IDX) {
+		BlogBoardVO vo = sqlSession.selectOne("board.blog_view",IDX);
 		return vo;
 	}
 	//글 수정하기
@@ -43,8 +43,8 @@ public class BlogBoardDAO {
 		return res;
 	}
 	//글 삭제하기
-	public int delet(int idx) {
-		int res = sqlSession.delete("board.blog_delet",idx);
+	public int delet(int IDX) {
+		int res = sqlSession.delete("board.blog_delet",IDX);
 		return res;
 	}
 	

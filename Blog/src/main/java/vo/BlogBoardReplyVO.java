@@ -19,7 +19,13 @@ public class BlogBoardReplyVO {
 	
 	
 	private String userid , content , regdate;
-	private int r_no , idx ;
+	private int r_idx , idx ;
+	public int getR_idx() {
+		return r_idx;
+	}
+	public void setR_idx(int r_idx) {
+		this.r_idx = r_idx;
+	}
 	private Date r_date;
 	
 	
@@ -48,12 +54,7 @@ public class BlogBoardReplyVO {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-	public int getR_no() {
-		return r_no;
-	}
-	public void setR_no(int r_no) {
-		this.r_no = r_no;
-	}
+
 	public int getIdx() {
 		return idx;
 	}

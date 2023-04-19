@@ -132,7 +132,7 @@ public class BlogBoardController {
 		int result =0;
 		
 		BlogUserVO member = (BlogUserVO)session.getAttribute("normal");
-		String userId = blogboardreplydao.idCheck(reply.getR_no());
+		String userId = blogboardreplydao.idCheck(reply.getR_idx());
 		
 		if(member.getUserid().equals(userId)) {
 			reply.setUserid(member.getUserid());
@@ -150,7 +150,7 @@ public class BlogBoardController {
 		
 		int result = 0; 
 		BlogUserVO member = (BlogUserVO)session.getAttribute("normal");
-		String userId = blogboardreplydao.idCheck(reply.getR_no());
+		String userId = blogboardreplydao.idCheck(reply.getR_idx());
 		
 		if(member.getUserid().equals(userId)) {
 			reply.setUserid(member.getUserid());

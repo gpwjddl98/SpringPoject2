@@ -7,33 +7,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 블로그 게시판 목록 전체 조회 -->
 	<select id="blog_lsit" resultType="vo.BlogBoardVO">
-		select * from blogboard order by idx desc
+		SELECT * FROM BLOGBOARD ORDER BY idx DESC
 	</select>
 	
 	<!-- 게시판 글 추가하기 -->
 	<insert id="blog_insert" parameterType="vo.BlogBoardVO">
-		insert into blogboard values (
-			blogbord_SEQ_IDX.nextval,
-			#{userid},
-			#{title},
-			#{content},
-			sysdate
-		)
+		INSERT INTO BLOGBOARD VALUES( 0 , #{title} , #{content} , now() )
 	</insert>
 	
 	<!-- 제목을 클릭하면 같은 idx로 자세히 보기 -->
 	<select id="blog_view" resultType="vo.BlogBoardVO" parameterType="Integer">
-		select * from blogboard where idx = #{idx}
+		SELECT * FROM BLOGBOARD WHERE idx = #{idx}
 	</select>
 	
 	<!-- 글 수정하기 -->
 	<update id="blog_update" parameterType="vo.BlogBoardVO">
-		update blogboard set title = #{title} , content = #{content} , regdate = sysdate where idx=#{idx}
+		UPDATE BLOGBOARD SET title = #{title} , content = #{content} , regdate = now() WHERE idx = #{idx}
 	</update>
 	
 	<!-- 글 삭제 -->
 	<delete id="blog_delet" parameterType="vo.BlogBoardVO">
-		delete from blogboard where idx = #{idx} 
+		DELETE FROM BLOGBOARD WHERE idx = #{idx}
 	</delete>
 	
 	

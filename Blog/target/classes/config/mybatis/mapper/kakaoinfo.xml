@@ -5,21 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="kakao">
 
 <select id="kakaoinfo" parameterType="java.util.HashMap" resultType="vo.KakaoVO" >
-	select * from kakao_table where k_name = #{nickname}
+	SELECT * FROM KAKAO_TABLE WHERE k_name = #{nickname}
 </select>
 
 <insert id="kakaoinfo_insert" parameterType="java.util.HashMap">
-	insert into kakao_table(k_name)
-		values(#{nickname})
+	INSERT INTO KAKAO_TABLE VALUES (#{nickname}) 
 </insert>
 	
-<insert id="kakao_reply_insert">
-	insert into kakao_reply values(KAKAO_REPLY_SEQ.nextval, #{idx} , #{k_name} , #{content} ,sysdate)
-</insert>
-
-<select id="kakao_reply_list" resultType="vo.KakaoVO" parameterType="int">
-	select * from kakao_reply where idx = #{idx}
-</select>
 
 	
 	

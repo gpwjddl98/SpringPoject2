@@ -2,17 +2,8 @@ package vo;
 
 public class BlogBoardVO {
 	
-	
-	/* create table blogboard(
-			idx number(3) primary key,
-			userid varchar2(50),
-			title varchar2(100),
-			content varchar2(2000),
-			regdate varchar2(10)
-		);
 
-		CREATE SEQUENCE blogboard_SEQ_IDX;
-	*/
+
 	
 	private int idx;
 	private String title, content, userid, regdate;

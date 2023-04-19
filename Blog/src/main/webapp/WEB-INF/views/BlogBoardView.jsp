@@ -92,14 +92,14 @@ function replyList(){
 				 	+ "<span class='userid'>" + this.userid + "</span>"
 				 	+ "<span class='date'>" + date + "</span>"
 				 	+ 	"<div class='reply_btn'>"
-				 	+ 		"<button type='button' class='reply_modify' data-r_no='" + this.r_no + "'>수정</button>"
-				 	+ 		"<button type='button' class='reply_delete' data-r_no='" + this.r_no + "'>삭제</button>"
+				 	+ 		"<button type='button' class='reply_modify' data-r_idx='" + this.r_idx + "'>수정</button>"
+				 	+ 		"<button type='button' class='reply_delete' data-r_idx='" + this.r_idx + "'>삭제</button>"
 					+ 	"</div>"
 				 	+ "<span class='replyContent'>"+ this.content + "</span>"
 				 	
 					+ "</div>"
 					+ "</li>";
-				
+				 
 			});
 			$(".replyList ol").html(str);
 		});
@@ -154,10 +154,10 @@ function replyList(){
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="vo" items="${list}">
+						<c:forEach var="list" items="${list}">
 							<tr>
-								<td><a href="BlogView.do?idx=${vo.idx }">${vo.title }</a></td>
-								<td style="text-align:center;">${vo.regdate }</td>
+								<td><a href="BlogView.do?idx=${list.idx }">${list.title }</a></td>
+								<td style="text-align:center;">${list.regdate }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -176,7 +176,7 @@ function replyList(){
 								</div>
 						</div><!-- info_box_head -->
 						<pre class="info_box_content">
-							${view.content }
+							${view.content}
 						</pre><!-- info_box_content -->
 						
 					<div class="replyList">
@@ -209,15 +209,18 @@ function replyList(){
 						<script>
 							$(document).on("click",".reply_modify",function(){
 								$(".replyModal").fadeIn(200);
-								var r_no = $(this).attr("data-r_no");
+								console.log($(this).attr("data-r_idx"));
+								var r_idx = $(this).attr("data-r_idx");
 								var r_cont = $(this).parent().parent().children(".replyContent").text();						
 								$(".modi_content").val(r_cont);
-								$(".modal_btn").attr("data-r_no" , r_no);	
+								$(".modal_btn").attr("data-r_idx" , r_idx);	
 							});
+							//attr 요소의 속성값을 가져오거나 추가한다.
 						</script>
 						<script>
 							$(document).on("click",".reply_delete",function(){						
-									var data = { r_no : $(this).attr("data-r_no")};
+									var data = { r_idx : $(this).attr("data-r_idx")};
+									console.log(data);
 									$.ajax({
 										url : "./replydelete.do",
 										type : "post",
@@ -251,7 +254,7 @@ function replyList(){
 									$("#reply_btn").click(function(){
 										var form = $("[name=f]").val();
 										var idx = $("input[name=idx]").val();
-										var cont = $("input[name=reply_box]").val()
+										var cont = $("input[name=reply_box]").val();
 										
 										
 										var data = {
@@ -287,7 +290,7 @@ function replyList(){
 	//게시글 수정하기
 	function modify(){
 		
-		f.action="update_form.do?idx="+${view.idx };
+		f.action="update_form.do?idx="+${view.idx};
 		f.method = "post";
 		f.submit();
 	}
@@ -319,7 +322,7 @@ function replyList(){
 		
 		if(modiconfirm){
 			var data ={
-						r_no : $(this).attr("data-r_no"),
+						r_idx : $(this).attr("data-r_idx"),
 						content : $(".modi_content").val() 
 						};
 			$.ajax({
