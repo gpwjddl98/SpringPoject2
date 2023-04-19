@@ -11,8 +11,8 @@ CREATE SEQUENCE blogboard_SEQ_IDX;
 
 --게시판 예시
 INSERT INTO blogboard VALUES(
-	blogbord_SEQ_IDX.nextval,
-	TEST1,
+	blogboard_SEQ_IDX.nextval,
+	'test1',
 	'안녕하세요~',
 	'혜정이의 일상을 기록하는 블로그 입니다.',
 	sysdate
@@ -20,8 +20,8 @@ INSERT INTO blogboard VALUES(
 
 --게시판 댓글 테이블
 CREATE TABLE blogreply( 
-	 R_NO NUMBER(3), --댓글의 고유번호 
-	 IDX NUMBER(3), --연결되어있는게시글 번호 
+	 R_NO NUMBER(3), 
+	 IDX NUMBER(3),
 	 USERID VARCHAR(30), 
 	 CONTENT VARCHAR(2000), 
 	 PRIMARY KEY(R_NO , IDX),
@@ -49,13 +49,13 @@ create table bloguser(
 	username varchar2(100) not null,
 	usertel1 varchar2(50) not null,
 	usertel2 varchar2(50) not null,
-	usertel3 varchar2(50 not null,
-	usermail vharchar2(200) not null,
+	usertel3 varchar2(50) not null,
+	usermail varchar2(200) not null,
 	verify number(3) default 0
 );
 --게시판 유저 예시
-Insert INTO bloguser(
-	'TEST1', 
+Insert INTO bloguser value(
+	'test1', 
 	'12341234qwer', 
 	'홍길동',
 	'010',
@@ -64,8 +64,8 @@ Insert INTO bloguser(
 	'gpwjddl98@naver.com',
 	9 --관리자 식별자
 );
-INSERT INTO bloguser(
-	'TEST2',
+INSERT INTO bloguser value(
+	'test2',
 	'qwerqwer1234',
 	'김길동',
 	'010',
