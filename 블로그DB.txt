@@ -1,0 +1,42 @@
+CREATE TABLE `BLOGBOARD` (
+	`idx` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_general_ci',
+	`content` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_general_ci',
+	`regdate` DATE NOT NULL,
+	PRIMARY KEY (`idx`) USING BTREE
+)
+COLLATE='utf8mb3_general_ci'
+ENGINE=InnoDB
+;
+
+
+CREATE TABLE `BLOGUSER` (
+	`userid` VARCHAR(100) NOT NULL COLLATE 'utf8mb3_general_ci',
+	`userpwd` VARCHAR(100) NOT NULL COLLATE 'utf8mb3_general_ci',
+	`username` VARCHAR(100) NOT NULL COLLATE 'utf8mb3_general_ci',
+	`usertel1` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+	`usertel2` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+	`usertel3` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+	`useremail` VARCHAR(200) NOT NULL COLLATE 'utf8mb3_general_ci',
+	`verify` SMALLINT(6) NULL DEFAULT '0',
+	PRIMARY KEY (`userid`) USING BTREE
+)
+COLLATE='utf8mb3_general_ci'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `BLOGREPLY` (
+	`r_idx` INT(11) NOT NULL AUTO_INCREMENT,
+	`idx` INT(11) NOT NULL,
+	`userid` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_general_ci',
+	`content` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_general_ci',
+	`r_date` DATE NULL DEFAULT NULL,
+	PRIMARY KEY (`r_idx`, `idx`) USING BTREE,
+	INDEX `IDX` (`idx`) USING BTREE,
+	INDEX `USERID` (`userid`) USING BTREE,
+	CONSTRAINT `IDX` FOREIGN KEY (`idx`) REFERENCES `gpwjddl98rds`.`BLOGBOARD` (`idx`) ON UPDATE RESTRICT ON DELETE CASCADE,
+	CONSTRAINT `USERID` FOREIGN KEY (`userid`) REFERENCES `gpwjddl98rds`.`BLOGUSER` (`userid`) ON UPDATE RESTRICT ON DELETE RESTRICT
+)
+COLLATE='utf8mb3_general_ci'
+ENGINE=InnoDB
+;
